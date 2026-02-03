@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. Box Model y Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Patrón de fondo para visualizar mejor los espacios */
+        .pattern-grid {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+    </style>
+</head>
+<body class="font-[Plus_Jakarta_Sans] text-slate-800 bg-slate-50">
+
+    <!-- Wrapper para demostración de h-screen (Sección altura) -->
+    <div class="min-h-screen p-10">
+        
+        <div class="max-w-6xl mx-auto space-y-16">
+
+            <!-- Header -->
+            <header class="text-center">
+                <h1 class="text-5xl font-bold text-slate-900 mb-4">05. Box Model y Dimensiones</h1>
+                <p class="text-xl text-slate-600">Anchura, Altura, Padding, Margin, Bordes y Layouts.</p>
+            </header>
+
+            <!-- 1. Anchura (Width) -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">1. Anchura (Width)</h2>
+                <div class="space-y-4">
+                    <!-- Sistema Numérico -->
+                    <div class="bg-blue-100 p-2 rounded">
+                        <div class="w-96 bg-blue-500 text-white p-2 text-center rounded">w-96 (384px)</div>
+                    </div>
+                    <!-- Fracciones -->
+                    <div class="flex gap-4 bg-emerald-100 p-2 rounded">
+                        <div class="w-1/2 bg-emerald-500 text-white p-2 text-center rounded shadow">w-1/2 (50%)</div>
+                        <div class="w-1/2 bg-emerald-500 text-white p-2 text-center rounded shadow">w-1/2 (50%)</div>
+                    </div>
+                    <div class="flex gap-4 bg-purple-100 p-2 rounded">
+                        <div class="w-1/3 bg-purple-500 text-white p-2 text-center rounded">w-1/3</div>
+                        <div class="w-2/3 bg-purple-600 text-white p-2 text-center rounded">w-2/3</div>
+                    </div>
+                    <!-- Arbitrario -->
+                    <div class="bg-orange-100 p-2 rounded">
+                        <div class="w-[75%] bg-orange-500 text-white p-2 text-center rounded">w-[75%] (Arbitrario)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Altura (Height) -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">2. Altura (Height)</h2>
+                <p class="mb-4 text-sm text-gray-500">Este contenedor gris tiene una altura fija de <code>h-64</code> (256px) para demostrar los porcentajes hijos.</p>
+                
+                <div class="flex gap-8 items-end h-64 bg-gray-200 p-4 rounded-lg border-2 border-dashed border-gray-400">
+                    <div class="w-20 h-full bg-red-500 text-white flex items-end justify-center pb-2 rounded">h-full</div>
+                    <div class="w-20 h-3/4 bg-red-400 text-white flex items-end justify-center pb-2 rounded">h-3/4</div>
+                    <div class="w-20 h-1/2 bg-red-300 text-white flex items-end justify-center pb-2 rounded">h-1/2</div>
+                    <div class="w-20 h-24 bg-red-200 text-red-800 flex items-end justify-center pb-2 rounded">h-24</div>
+                </div>
+            </section>
+
+            <!-- 3. Padding y Margin -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">3. Padding y Margin</h2>
+                
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Padding -->
+                    <div class="border rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 p-4 border-b text-center font-bold">Padding (Relleno Interno)</div>
+                        <div class="bg-indigo-200">
+                            <div class="bg-indigo-500 text-white p-10 m-4">
+                                <span class="bg-black/20 p-2">Soy el contenido</span>
+                            </div> 
+                            <p class="text-center text-xs p-2 text-indigo-900">La caja azul tiene <code>p-10</code> (espacio interno).</p>
+                        </div>
+                    </div>
+
+                    <!-- Margin -->
+                    <div class="border rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 p-4 border-b text-center font-bold">Margin y Centrado</div>
+                        <div class="bg-pink-100 pattern-grid h-full p-4">
+                            <div class="w-1/2 mx-auto bg-pink-500 text-white p-4 text-center rounded shadow-lg">
+                                <p class="font-bold">mx-auto</p>
+                                <p class="text-sm">Centrado horizontalmente</p>
+                            </div>
+                            
+                            <div class="mt-8 bg-white p-4 rounded shadow border border-pink-200">
+                                <p class="mb-4">Elemento normal</p>
+                                <!-- Margen Negativo -->
+                                <div class="-mt-6 ml-10 bg-purple-600 text-white p-2 rounded shadow w-32 text-center text-sm z-10 relative">
+                                    -mt-6 (Negativo)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Bordes -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">4. Bordes</h2>
+                
+                <div class="flex flex-wrap gap-6 justify-center">
+                    <div class="w-32 h-32 bg-white flex items-center justify-center border border-gray-300 rounded">
+                        border (1px)
+                    </div>
+                    <div class="w-32 h-32 bg-white flex items-center justify-center border-4 border-blue-500 rounded-lg">
+                        border-4
+                    </div>
+                    <div class="w-32 h-32 bg-white flex items-center justify-center border-l-8 border-green-500 shadow">
+                        border-l-8
+                    </div>
+                    <div class="w-32 h-32 bg-white flex items-center justify-center border-4 border-dashed border-red-500 rounded-full">
+                        dashed
+                    </div>
+                    <div class="w-32 h-32 bg-white flex items-center justify-center border-y-4 border-purple-500">
+                        border-y-4
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Space Between y Divide -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">5. Espaciado y División entre hijos</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Space-x/y -->
+                    <div>
+                        <h3 class="font-bold mb-2 text-slate-600">space-y-4 (Margen automático)</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 space-y-4">
+                            <div class="p-3 bg-blue-100 rounded">Elemento 1</div>
+                            <div class="p-3 bg-blue-100 rounded">Elemento 2</div>
+                            <div class="p-3 bg-blue-100 rounded">Elemento 3</div>
+                        </div>
+                    </div>
+
+                    <!-- Divide-y -->
+                    <div>
+                        <h3 class="font-bold mb-2 text-slate-600">divide-y (Bordes automáticos)</h3>
+                        <div class="bg-white rounded-lg shadow-sm border border-slate-200 divide-y divide-slate-200">
+                            <div class="p-4 hover:bg-slate-50">Opción 1</div>
+                            <div class="p-4 hover:bg-slate-50">Opción 2</div>
+                            <div class="p-4 hover:bg-slate-50">Opción 3</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Card Demo -->
+            <section>
+                <h2 class="text-2xl font-bold mb-8 border-b pb-2">6. Ejemplo Final: Card Profesional</h2>
+                <p class="mb-8 text-center text-gray-500">Esta tarjeta utiliza todas las técnicas combinadas: anchos, padding, redondeado, imágenes responsivas y space-y.</p>
+                
+                <!-- Card Implementation (From Markdown) -->
+                <div class="w-full max-w-md mx-auto my-10 border border-gray-200 bg-white py-7 px-5 rounded-2xl shadow-xl space-y-8 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="overflow-hidden rounded-md">
+                         <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                              class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500" 
+                              alt="Montaña">
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold text-slate-900 leading-tight">Explora las Montañas</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut fuga temporibus consectetur libero impedit a provident sed exercitationem.
+                        </p>
+                    </div>
+
+                    <a href="#" class="block w-full bg-blue-600 text-white text-center font-bold py-4 rounded-full hover:bg-blue-700 active:bg-blue-800 transition-colors">
+                        Leer más
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
