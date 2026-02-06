@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07. Responsive Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 pb-20">
+
+    <!-- Indicador de Breakpoint (ayuda visual) -->
+    <div class="fixed top-4 right-4 bg-slate-900 text-white px-4 py-2 rounded shadow-lg z-50 font-mono text-xs">
+        <span class="block sm:hidden">Size: Default (&lt;640px)</span>
+        <span class="hidden sm:block md:hidden">Size: sm (≥640px)</span>
+        <span class="hidden md:block lg:hidden">Size: md (≥768px)</span>
+        <span class="hidden lg:block xl:hidden">Size: lg (≥1024px)</span>
+        <span class="hidden xl:block 2xl:hidden">Size: xl (≥1280px)</span>
+        <span class="hidden 2xl:block">Size: 2xl (≥1536px)</span>
+    </div>
+
+    <div class="max-w-5xl mx-auto p-6 space-y-16">
+
+        <header class="text-center pt-10">
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">07. Responsive Design</h1>
+            <p class="text-lg text-slate-600">Diseño adaptativo usando breakpoints y estrategia Mobile-First.</p>
+        </header>
+
+        <!-- 1. Breakpoints Básicos -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2">1. Breakpoints Básicos</h2>
+            <p class="mb-4">Redimensiona tu navegador. Esta caja cambiará de color según el ancho.</p>
+
+            <div class="p-10 rounded-xl transition-colors duration-500
+                        bg-slate-800 text-white
+                        sm:bg-red-500
+                        md:bg-green-500
+                        lg:bg-blue-500
+                        xl:bg-purple-500">
+                <div class="text-center font-bold text-2xl">
+                    <!-- Texto dinámico usando clases display -->
+                    <span class="block sm:hidden">Móvil (Bg Slate)</span>
+                    <span class="hidden sm:block md:hidden">Tablet pequeña / SM (Bg Red)</span>
+                    <span class="hidden md:block lg:hidden">Tablet / MD (Bg Green)</span>
+                    <span class="hidden lg:block xl:hidden">Laptop / LG (Bg Blue)</span>
+                    <span class="hidden xl:block">Desktop / XL (Bg Purple)</span>
+                </div>
+            </div>
+            
+            <div class="mt-4 bg-white p-4 rounded border text-sm font-mono text-slate-500">
+                class="bg-slate-800 sm:bg-red-500 md:bg-green-500 lg:bg-blue-500"
+            </div>
+        </section>
+
+        <!-- 2. Navbar Mobile-First -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2">2. Navbar Responsive (Mobile-First)</h2>
+            <p class="mb-4">Este menú se transforma de vertical (columna) en móvil a horizontal (fila) en escritorio.</p>
+
+            <div class="border rounded-lg overflow-hidden shadow-sm bg-white">
+                <nav class="h-auto bg-slate-800 text-white p-6
+                            flex flex-col items-center gap-5
+                            md:flex-row md:h-20 md:justify-between md:px-10">
+                
+                    <!-- Logo -->
+                    <div class="font-bold text-xl flex items-center gap-2">
+                        <div class="w-8 h-8 bg-amber-500 rounded-full"></div>
+                        LOGO
+                    </div>
+                
+                    <!-- Menú (Reordenado en móvil al final, en desktop al centro usando order) -->
+                    <div class="flex flex-col gap-4 text-center w-full
+                                md:flex-row md:gap-10 md:w-auto md:order-0 order-1">
+                        <a href="#" class="hover:text-amber-400">Inicio</a>
+                        <a href="#" class="hover:text-amber-400">Servicios</a>
+                        <a href="#" class="hover:text-amber-400">Contacto</a>
+                    </div>
+                
+                    <!-- CTA -->
+                    <a href="#" class="bg-amber-600 px-6 py-2 rounded-lg w-full text-center md:w-auto hover:bg-amber-500">
+                        Acceder
+                    </a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- 3. Grid Responsive -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2">3. Layout Grid Adaptable</h2>
+            <p class="mb-4">1 columna en móvil, 2 en tablet, 3 en escritorio.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow border border-slate-200">
+                    <div class="h-32 bg-slate-200 rounded mb-4"></div>
+                    <h3 class="font-bold text-lg mb-2">Tarjeta 1</h3>
+                    <p class="text-slate-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border border-slate-200">
+                    <div class="h-32 bg-slate-200 rounded mb-4"></div>
+                    <h3 class="font-bold text-lg mb-2">Tarjeta 2</h3>
+                    <p class="text-slate-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border border-slate-200">
+                    <div class="h-32 bg-slate-200 rounded mb-4"></div>
+                    <h3 class="font-bold text-lg mb-2">Tarjeta 3</h3>
+                    <p class="text-slate-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Rangos y Desktop-First -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2">4. Rangos y Desktop-First</h2>
+            
+            <div class="grid gap-6">
+                <!-- Rango min-max -->
+                <div class="p-6 bg-gray-200 rounded text-center font-bold text-slate-700
+                            sm:max-md:bg-yellow-300 sm:max-md:text-yellow-900 border border-slate-300">
+                    <p class="sm:max-md:hidden">Soy gris por defecto</p>
+                    <p class="hidden sm:max-md:block">¡Soy amarillo SOLO en Tablet (sm a md)!</p>
+                </div>
+
+                <!-- Desktop First (max-*) -->
+                <div class="p-6 rounded text-center font-bold text-white
+                            bg-blue-600 max-md:bg-pink-600">
+                    <p>Azul en Desktop, Rosa si es menor a md (max-md)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Ejemplo Práctico "Morphing Box" -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 border-b pb-2">5. Ejemplo Completo: Morphing Box</h2>
+            <p class="mb-4">El ejemplo cambia de ancho, padding y color.</p>
+
+            <div class="
+                mx-auto transition-all duration-700 ease-in-out
+                w-full p-4 bg-blue-500
+                sm:w-3/4 sm:p-6 sm:bg-green-500 sm:rounded-lg
+                md:w-1/2 md:p-8 md:bg-yellow-500 md:shadow-xl
+                lg:w-1/3 lg:p-10 lg:bg-red-500 lg:rotate-3
+            ">
+                <h2 class="text-white font-bold text-center
+                           text-xl md:text-3xl lg:text-4xl">
+                    Caja Responsive
+                </h2>
+                <p class="text-white/80 text-center mt-2 text-sm">Redimensiona para ver los cambios.</p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
